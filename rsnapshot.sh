@@ -1,7 +1,5 @@
 #!/bin/sh
 
-echo "setup conf"
-
 echo -e "config_version\t1.2" >> /etc/rsnapshot.conf
 echo -e "snapshot_root\t/snapshots" >> /etc/rsnapshot.conf
 echo -e "cmd_cp\t$(which cp)" >> /etc/rsnapshot.conf
@@ -85,7 +83,6 @@ echo -e "no_create_root\t${NO_CREATE}" >> /etc/rsnapshot.conf
 cat /etc/rsnapshot.conf
 rsnapshot configtest
 
-echo "setup keys"
 if [ -d /keys ]
 then
   mkdir /root/.ssh
@@ -94,7 +91,6 @@ then
   chown root:root /root/.ssh/*
 fi
 
-echo "setup cron"
 cat << EOF >> /etc/crontabs/root
 0 */4         * * *           root    /usr/bin/rsnapshot hourly
 30 3          * * *           root    /usr/bin/rsnapshot daily
