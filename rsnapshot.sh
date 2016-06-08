@@ -85,7 +85,7 @@ rsnapshot configtest
 
 if [ -d /keys ]
 then
-  mkdir /root/.ssh
+  mkdir -p /root/.ssh
   cp /keys/* /root/.ssh/
   chmod 600 /root/.ssh/*
   chown root:root /root/.ssh/*
