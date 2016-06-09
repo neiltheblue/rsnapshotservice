@@ -98,7 +98,7 @@ cat << EOF >> /etc/crontabs/root
 30 2          1 * *           /usr/bin/rsnapshot monthly
 EOF
 
-/bin/bash /prep_ssmtp.sh
+/bin/sh /prep_ssmtp.sh
 
 echo "starting cron..."
 crond -f
