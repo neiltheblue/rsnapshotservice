@@ -2,7 +2,7 @@
 
 rsnapshot service based on Alpine linux
 
-This container runs a cron task and configures the rsnapshot service.
+This container runs a cron task and configures the rsnapshot service. There is also an sssmtp service that allows fro sending emails from the container.
 
 ## To run a server
 
