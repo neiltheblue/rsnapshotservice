@@ -69,3 +69,36 @@ The generate config file can see seen in the container logs:
 docker logs -f snappy
 `
 
+# SSMTP support
+
+Any environment settings starting with `SSMTP_` wil be added to the `ssmtp.conf` file. This exmple sends emails for ids<1000 to a gmail account:
+
+```
+docker run -d \
+--name snappy \
+-e SSMTP_root=me@gmail.com \
+-e SSMTP_mailhub=smtp.gmail.com:587 \
+-e SSMTP_hostname=thishost \
+-e SSMTP_FromLineOverride=NO \
+-e SSMTP_AuthUser=me@gmail.com \
+-e SSMTP_AuthPass=mypass \
+-e SSMTP_UseSTARTTLS=YES \
+neiltheblue/rsnapshotservice
+```
+
+You can test this in a runing container with:
+
+```
+docker exec -ti snappy /bin/bash
+```
+
+Then enter:
+
+```
+sendmail root
+test
+.
+
+```
+
+This will send a test email to your specified gmail account.
